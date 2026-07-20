@@ -18,3 +18,14 @@ Route::post('/insert', [AdminController::class, 'insert'])->name('insert');
 Route::get('/books', [BookController::class, 'index'])->name('book');
 
 Route::post('/books', [BookController::class, 'store'])->name('book.store');
+
+use Illuminate\Support\Facades\DB;
+
+Route::get('test_db', function () {
+    try {
+        DB::connection('mysql')->getPdo();
+        return "เชื่อมต่อฐานข้อมูลสำเร็จ";
+    } catch (\Throwable $th) {
+        return "Error: " . $th->getMessage();
+    }
+});

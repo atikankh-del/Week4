@@ -41,14 +41,19 @@ class AdminController extends Controller
 
     function insert(Request $request)
     {
-        $blog = [
+        $request->validate(
             [
-                'title' => $request->title,
-                'content' => $request->content,
-                'status' => $request->status,
-            ]
-        ];
-
+                'title' => 'required|max:50',
+                'content' => 'required',
+                'status' => 'required',
+            ],
+            [
+                'title.required' => 'กรุณากรอกชื่อบทความ',
+                'title.max' => 'ชื่อบทความต้องไม่เกิน 50 ตัวอักษร',
+                'content.required' => 'กรุณากรอกเนื้อหาบทความ',
+                'status.required' => 'กรุณากรอกสถานะบทความ',
+            ],
+        );
         return view('blog', compact('blog'));
     }
 
