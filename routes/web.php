@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BookController;
@@ -13,6 +12,8 @@ Route::get('/about', [AdminController::class, 'about'])->name('about');
 Route::get('/blog', [AdminController::class, 'blog'])->name('blog');
 
 Route::get('/form', [AdminController::class, 'form'])->name('form');
+
+Route::post('/insert', [AdminController::class, 'insert'])->name('insert');
 
 Route::get('/books', [BookController::class, 'index'])->name('book');
 

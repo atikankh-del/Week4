@@ -1,9 +1,7 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
@@ -41,7 +39,21 @@ class AdminController extends Controller
         return view('about', $data);
     }
 
-    function form() {
+    function insert(Request $request)
+    {
+        $blog = [
+            [
+                'title' => $request->title,
+                'content' => $request->content,
+                'status' => $request->status,
+            ]
+        ];
+
+        return view('blog', compact('blog'));
+    }
+
+    function form()
+    {
         return view('form');
     }
 }
